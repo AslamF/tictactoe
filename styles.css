@@ -1,13 +1,21 @@
 * {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
+    box-sizing: border-box;
+
+
+}
+
+@font-face {
+    font-family: 'PokemonGB';
+    src: url('PokemonGB.ttf');
 }
 
 body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: "PokemonGB";
 }
 
 .header,
@@ -15,6 +23,18 @@ body {
     height: 150px;
     background-color: beige;
 }
+
+.header {
+    background-color: #6ab4e6;
+
+
+}
+
+.footer {
+    background-color: #9473b4;
+
+}
+
 
 
 .main {
@@ -27,7 +47,104 @@ body {
 .gameBoard {
     height: 500px;
     width: 500px;
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr 1fr;
 
+}
+
+.icon {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.mainBox {
+    display: none;
+    gap: 50px;
+}
+
+.playerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    text-align: center;
+    border: 5px solid black;
+}
+
+.playerInfo {
+    padding-bottom: 50px;
+}
+
+
+
+.playerImg {
+    width: 150px;
+    height: 120px;
+
+}
+
+form {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+
+
+}
+
+.formBox1 {
+    display: flex;
+    gap: 25px;
+    margin: 25px;
+
+}
+
+.vertical {
+    border-left: 5px solid black;
+}
+
+input[type="text"] {
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px
+}
+
+.formElement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+#submit {
+    position: relative;
+    width: 100px;
+    padding: 5px;
+
+}
+
+.wrapper {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.totodile {
+    background-color: #3183c5;
+
+}
+
+.gengar {
+    background-color: #5a4a9c;
 }

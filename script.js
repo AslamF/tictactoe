@@ -1,5 +1,11 @@
 // Physical Gameboard Module
 let gameStart = true;
+let submit = document.querySelector("#submit");
+let wrapper = document.querySelector(".wrapper");
+let form = document.querySelector(".form");
+let board = document.querySelector(".gameBoard");
+let mainbox = document.querySelector(".mainBox");
+
 
 
 const Gameboard = (() => {
@@ -16,8 +22,6 @@ const Gameboard = (() => {
        ""
     ];
 
-   
-    
     return {
         gameboard,
         
@@ -28,20 +32,32 @@ const Gameboard = (() => {
 
 // Factory Function for Players
 const Player = (symbol, name) => {
-    name = prompt("waht is your name?");
+    name =  document.querySelector("#player1").value;
     return {
         symbol,
-        name
+        name 
     };
 };
 
 
 
+
+
 // Module - To Control Game
+
 const gameControl = (() => {
     let player1 =  Player("X");
     let player2 = Player("O");
+    
+    return {
+        player1,
+        player2,
+        
+        
+    }
+})();
 
+//FUNCTION TO PLAY GAME
 const tiles = (() => {
     const grid = document.querySelectorAll(".button");
     const playerTurn = document.querySelector(".playerTurn");
@@ -53,15 +69,18 @@ const tiles = (() => {
         btnsArr[i].addEventListener("click", ()=>{    
         if (gameStart === true){
             if((currentPlayer === true) &&  (Gameboard.gameboard[i] === "")){
-                playerTurn.textContent = `IT IS ${gameControl.player1.name} TURN`
+               // playerTurn.textContent = `IT IS PLAYER 2 TURN`
                 Gameboard.gameboard[i] = gameControl.player1.symbol;
+                btnsArr[i].classList.add("totodile");
                 btnsArr[i].textContent = Gameboard.gameboard[i];
+               
                 wonGame();
                 currentPlayer = false;
             }
             else if((currentPlayer === false) && (Gameboard.gameboard[i] === "")){
-                playerTurn.textContent = `It is ${gameControl.player2.name} TURN`
+                //playerTurn.textContent = `It is PLAYER 1 TURN`
                 Gameboard.gameboard[i] = gameControl.player2.symbol;
+                btnsArr[i].classList.add("gengar");
                 btnsArr[i].textContent = Gameboard.gameboard[i];
                 wonGame();
                 currentPlayer = true;
@@ -70,21 +89,11 @@ const tiles = (() => {
         }
         })
     }
-   
+
 })();
 
 
-    return {
-        player1,
-        player2,
-        tiles,
-        
-        
-    }
-})();
-
-
-
+// FUNCTION TO FIND A WINNER
 function wonGame() {
     let winConditions = [
         [0,1,2],
@@ -136,3 +145,16 @@ function wonGame() {
 }
 
 
+let playerOneName = document.querySelector(".playerOneName");
+let playerTwoName = document.querySelector(".playerTwoName");
+submit.addEventListener("click", ()=>{
+    event.preventDefault();
+    console.log("tree");
+    wrapper.style.display = "none";
+    board.style.display = "grid";
+    mainbox.style.display = "flex";
+    playerOneName.textContent = document.querySelector("#player1").value;
+    playerTwoName.textContent = document.querySelector("#player2").value;
+})
+
+    
