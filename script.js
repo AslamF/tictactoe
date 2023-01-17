@@ -46,12 +46,17 @@ const Player = (symbol, name) => {
 // Module - To Control Game
 
 const gameControl = (() => {
+   
+    
+
     let player1 =  Player("X");
     let player2 = Player("O");
     
     return {
         player1,
         player2,
+
+        
         
         
     }
@@ -62,6 +67,9 @@ const tiles = (() => {
     const grid = document.querySelectorAll(".button");
     const playerTurn = document.querySelector(".playerTurn");
     const btnsArr = Array.from(grid);
+
+   
+    
     
     let currentPlayer = true;
     
@@ -72,8 +80,11 @@ const tiles = (() => {
                // playerTurn.textContent = `IT IS PLAYER 2 TURN`
                 Gameboard.gameboard[i] = gameControl.player1.symbol;
                 btnsArr[i].classList.add("totodile");
-                btnsArr[i].textContent = Gameboard.gameboard[i];
-               
+                const symbolX = document.createElement("img");
+                symbolX.classList.add("icon2")
+                symbolX.src = "close.png";
+                //btnsArr[i].textContent = Gameboard.gameboard[i];
+                btnsArr[i].appendChild(symbolX);
                 wonGame();
                 currentPlayer = false;
             }
@@ -81,7 +92,11 @@ const tiles = (() => {
                 //playerTurn.textContent = `It is PLAYER 1 TURN`
                 Gameboard.gameboard[i] = gameControl.player2.symbol;
                 btnsArr[i].classList.add("gengar");
-                btnsArr[i].textContent = Gameboard.gameboard[i];
+                const symbolO = document.createElement("img");
+                symbolO.src="o.png";
+                symbolO.classList.add("icon2")
+                //btnsArr[i].textContent = Gameboard.gameboard[i];
+                btnsArr[i].appendChild(symbolO);
                 wonGame();
                 currentPlayer = true;
             }
@@ -129,14 +144,30 @@ function wonGame() {
 
     if (gameWon && a === "X"){
         console.log(`${gameControl.player1.symbol} has won`);
+        let tree = document.querySelector(".playerInfo1");
+        let winnerDiv = document.createElement("div")
+        winnerDiv.textContent = "WINNER!";
+        tree.appendChild(winnerDiv);
         gameStart = false;
     }
     else if (gameWon && a === "O"){
         console.log(`${gameControl.player2.symbol} has won`);
+        let tree = document.querySelector(".playerInfo2");
+        let winnerDiv = document.createElement("div")
+        winnerDiv.textContent = "WINNER!";
+        tree.appendChild(winnerDiv);
         gameStart = false;
     }
 
     if (!Gameboard.gameboard.includes("") && gameWon === false){
+        let tree = document.querySelector(".playerInfo1");
+        let tree2 = document.querySelector(".playerInfo2")
+        let tieDiv = document.createElement("div");
+        let tieDiv2 = document.createElement("div");
+        tieDiv.textContent = "TIE!";
+        tieDiv2.textContent = "TIE!"
+        tree.appendChild(tieDiv);
+        tree2.appendChild(tieDiv2);
         console.log("TIE");
         gameStart = false;
 
