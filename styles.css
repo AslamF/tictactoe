@@ -26,8 +26,16 @@ body {
 
 .header {
     background-color: #6ab4e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    gap: 15px;
+}
 
-
+p:last-child {
+    font-size: 15px;
 }
 
 .footer {
@@ -49,8 +57,18 @@ body {
     width: 500px;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
-
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    border-radius: 10px;
+    background-color: rgb(256, 256, 256);
 }
+
+.button {
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+
 
 .icon {
     width: 50px;
@@ -60,7 +78,7 @@ body {
 
 .icon2 {
     height: 35px;
-    opacity: 0.5;
+    opacity: 0.9;
 }
 
 .mainBox {
@@ -68,7 +86,8 @@ body {
     gap: 50px;
 }
 
-.playerBox {
+.playerBox1,
+.playerBox2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,9 +98,51 @@ body {
     border: 5px solid black;
 }
 
-.playerInfo {
-    padding-bottom: 50px;
 
+
+.playerBoxOne {
+    border: 5px solid #3183c5;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+}
+
+.playerBoxTwo {
+    border: 5px solid #9473b4;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 3s infinite;
+}
+
+.playerInfo {
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.playerInfo h2 {
+    padding-top: 50px;
 }
 
 
@@ -101,6 +162,7 @@ form {
     border-radius: 10px;
 
 
+
 }
 
 .formBox1 {
@@ -115,11 +177,23 @@ form {
 }
 
 input[type="text"] {
-    height: 25px;
+    height: 30px;
     border: none;
     border-radius: 5px;
-    padding: 5px
+    padding: 5px;
+    outline: none;
+    font-family: "PokemonGB";
 }
+
+#player1:focus {
+    border: 2px solid #3183c5;
+}
+
+#player2:focus {
+    border: 2px solid #9473b4;
+}
+
+
 
 .formElement {
     display: flex;
@@ -129,11 +203,43 @@ input[type="text"] {
     gap: 15px;
 }
 
-#submit {
-    position: relative;
-    width: 100px;
-    padding: 5px;
 
+
+
+/* CSS */
+#submit,
+.refresh {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "PokemonGB";
+    line-height: 29px;
+    padding: 0 10px 0 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+}
+
+#submit:hover,
+.refresh:hover {
+    background-color: #f7fafa;
+}
+
+#submit:focus,
+.refresh:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
 }
 
 .wrapper {
@@ -147,17 +253,44 @@ input[type="text"] {
 }
 
 .totodile {
-    background-color: #3183c5;
+    background-color: #6ab4e6;
 
 }
 
 .gengar {
-    background-color: #5a4a9c;
+    background-color: #9473b4;
 }
 
 .playerOneName::after {
     display: none;
-    content: "WINNER!";
+    content: "WINNER";
 }
 
-.playerOneName {
+
+.pokeball {
+    height: 25px;
+    width: 25px;
+}
+
+.gameboardMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winnerPokeBalls,
+.winnerPokeBalls2 {
+    display: flex;
+    gap: 15px;
+}
+
+.boxWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.winnerText {
+    color: red;
+}

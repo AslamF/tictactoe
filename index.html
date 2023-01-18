@@ -13,71 +13,87 @@
 <body>
 
     <div class="header">
+        <p>TIC-TAC-TOE</p>
+        <p>- FIRST TO 3 -</p>
 
     </div>
 
     <div class="main">
         <!-- <div class="playerTurn"></div>
         -->
-        <div class="mainBox">
-            <div class="playerBox">
-                <div class="playerInfo playerInfo1">
-                    <h2>PLAYER 1</h2>
-                    <h3 class="playerOneName">PLAYER NAME</h3>
-                </div>
-                <img class="playerImg" src="totodile.gif">
-
-            </div>
-
-            <div class="gameBoard">
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
-            </div>
-
-            <div class="playerBox">
-                <div class="playerInfo playerInfo2">
-                    <h2>PLAYER 2</h2>
-                    <h3 class="playerTwoName">PLAYER NAME</h3>
-                </div>
-                <img class="playerImg" src="genger.gif" </div>
-            </div>
-        </div>
-
-        <div class="wrapper">
-            <div class="form">
-                <form method="get" id="playerInfo">
-                    <div class="formBox1">
-                        <div class="formElement">
-                            <h2>PLAYER 1</h2>
-                            <label for="player1"></label>
-                            <input type="text" name="playerOne" id="player1" placeholder="Name" required>
-
-                            <img class="icon" src="close.png">
-                        </div>
-                        <div class="vertical"></div>
-                        <div class="formElement">
-                            <h2>PLAYER 2</h2>
-
-                            <label for="player2"></label>
-                            <input type="text" name="playerTwo" id="player2" placeholder="Name" required>
-
-                            <img class="icon" src="o.png">
-
-                        </div>
+        <div class="boxWrapper">
+            <div class="mainBox">
+                <div class="playerBox1">
+                    <div class="playerInfo playerInfo1">
+                        <h2>PLAYER 1</h2>
+                        <h3 class="playerOneName">PLAYER NAME</h3>
+                        <div class="winnerBox"></div>
+                        <div class="winnerPokeBalls"></div>
                     </div>
-                    <input type="submit" value="SUBMIT" id="submit">
-                </form>
+                    <img class="playerImg" src="totodile.gif">
+
+                </div>
+
+                <div class="gameboardMain">
+                    <div class="gameBoard">
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                        <button class="button"></button>
+                    </div>
+
+                </div>
+
+                <div class="playerBox2">
+                    <div class="playerInfo playerInfo2">
+                        <h2>PLAYER 2</h2>
+                        <h3 class="playerTwoName">PLAYER NAME</h3>
+                        <div class="winnerBox2"></div>
+                        <div class="winnerPokeBalls2"></div>
+                    </div>
+                    <img class="playerImg" src="genger.gif">
+                </div>
             </div>
 
+
+            <button class="refresh">RESET</button>
         </div>
     </div>
+
+    <div class="wrapper">
+        <div class="form">
+            <form method="get" id="playerInfo">
+                <div class="formBox1">
+                    <div class="formElement">
+                        <h2>PLAYER 1</h2>
+                        <label for="player1"></label>
+                        <input type="text" name="playerOne" id="player1" placeholder="Name" required>
+
+
+                    </div>
+                    <div class="vertical"></div>
+                    <div class="formElement">
+                        <h2>PLAYER 2</h2>
+
+                        <label for="player2"></label>
+                        <input type="text" name="playerTwo" id="player2" placeholder="Name" required>
+
+
+
+                    </div>
+                </div>
+                <input type="submit" value="SUBMIT" id="submit">
+            </form>
+        </div>
+
+    </div>
+    </div>
+
 
 
     <div class="footer">
