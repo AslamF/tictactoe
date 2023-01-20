@@ -2,11 +2,9 @@
 let gameStart = true;
 let submit = document.querySelector("#submit");
 let wrapper = document.querySelector(".wrapper");
-let form = document.querySelector(".form");
 let board = document.querySelector(".gameBoard");
 let mainbox = document.querySelector(".mainBox");
 let reset = document.querySelector(".refresh");
-
 let player1Count = 0;
 let player2Count = 0;
 
@@ -49,8 +47,6 @@ const Player = (symbol, name) => {
 // Module - To Control Game
 
 const gameControl = (() => {
-   
-    
 
     let player1 =  Player("X");
     let player2 = Player("O");
@@ -64,12 +60,11 @@ const gameControl = (() => {
 //FUNCTION TO PLAY GAME
 const tiles = (() => {
     const grid = document.querySelectorAll(".button");
-    const playerTurn = document.querySelector(".playerTurn");
     const box1 = document.querySelector(".playerBox1");
     const box2 = document.querySelector(".playerBox2");
     const btnsArr = Array.from(grid);
     let currentPlayer = true;
-    let gameCount = 0;
+    
 
     box1.classList.add("playerBoxOne")
     
@@ -78,14 +73,11 @@ const tiles = (() => {
         btnsArr[i].addEventListener("click", ()=>{    
         if (gameStart === true){
             if((currentPlayer === true) &&  (Gameboard.gameboard[i] === "")){
-               // playerTurn.textContent = `IT IS PLAYER 2 TURN`
-               
                 Gameboard.gameboard[i] = gameControl.player1.symbol;
                 btnsArr[i].classList.add("totodile");
                 const symbolX = document.createElement("img");
                 symbolX.classList.add("icon2")
                 symbolX.src = "close.png";
-                //btnsArr[i].textContent = Gameboard.gameboard[i];
                 btnsArr[i].appendChild(symbolX);
                 wonGame();
                 box1.classList.remove("playerBoxOne");
@@ -93,13 +85,12 @@ const tiles = (() => {
                 currentPlayer = false;
             }
             else if((currentPlayer === false) && (Gameboard.gameboard[i] === "")){
-                //playerTurn.textContent = `It is PLAYER 1 TURN`
+
                 Gameboard.gameboard[i] = gameControl.player2.symbol;
                 btnsArr[i].classList.add("gengar");
                 const symbolO = document.createElement("img");
                 symbolO.src="o.png";
                 symbolO.classList.add("icon2")
-                //btnsArr[i].textContent = Gameboard.gameboard[i];
                 btnsArr[i].appendChild(symbolO);
                 wonGame();
                 box2.classList.remove("playerBoxTwo");
@@ -152,6 +143,7 @@ function wonGame() {
         [2,4,6]
     ];
     
+    
     let gameWon = false;
     let a;
    
@@ -177,7 +169,6 @@ function wonGame() {
     }
 
     if (gameWon && a === "X"){
-        console.log(`${gameControl.player1.symbol} has won`);
         player1Count++;
         let tree = document.querySelector(".playerInfo1");
         let winnerDiv = document.createElement("div")
@@ -197,7 +188,6 @@ function wonGame() {
         });
         
         if(player1Count === 3){
-            console.log("YOU ARE THE WORLD CHAMP!!!")
             document.querySelector(".gameboardMain").remove();
             reset.remove();
             winnerDiv.textContent = "WORLD CHAMPION";
@@ -208,7 +198,6 @@ function wonGame() {
         
     }
     else if (gameWon && a === "O"){
-        console.log(`${gameControl.player2.symbol} has won`);
         player2Count++;
         let tree = document.querySelector(".playerInfo2");
         let winnerDiv = document.createElement("div")
@@ -226,7 +215,6 @@ function wonGame() {
         })
         
         if(player2Count === 3){
-            console.log("YOU ARE THE WORLD CHAMP!")
             document.querySelector(".gameboardMain").remove();
             reset.remove();
             winnerDiv.textContent = "WORLD CHAMPION";
@@ -260,11 +248,11 @@ function wonGame() {
 }
 
 
-let playerOneName = document.querySelector(".playerOneName");
-let playerTwoName = document.querySelector(".playerTwoName");
+
 submit.addEventListener("click", ()=>{
+    let playerOneName = document.querySelector(".playerOneName");
+    let playerTwoName = document.querySelector(".playerTwoName");
     event.preventDefault();
-    console.log("tree");
     wrapper.style.display = "none";
     board.style.display = "grid";
     mainbox.style.display = "flex";
